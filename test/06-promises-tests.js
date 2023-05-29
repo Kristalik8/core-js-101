@@ -200,10 +200,12 @@ describe('07-promises-tasks', () => {
         global.console.error(err);
         reject(Error('there are should not be any Unhandled Rejections!'));
       });
-      result2 = tasks.chainPromises(arrayForPromise.map((item) => (item % 2
-        ? Promise.resolve(item)
-        : Promise.reject(Error(`Predictable Rejection ${item}`)))),
-      (a, b) => a - b);
+      result2 = tasks.chainPromises(
+        arrayForPromise.map((item) => (item % 2
+          ? Promise.resolve(item)
+          : Promise.reject(Error(`Predictable Rejection ${item}`)))),
+        (a, b) => a - b,
+      );
       result2.then(() => resolve());
     });
 
